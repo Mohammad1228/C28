@@ -1,9 +1,9 @@
 class Chain{
-    constructor(bodyA, bodyB){
+    constructor(bodyA, P1){
         var options = {
             bodyA: bodyA,
-            bodyB: bodyB,
-            stiffness: 0.04,
+            pointB: P1,
+            stiffness: 0.10,
             length: 10
         }
         this.chain = Constraint.create(options);
@@ -11,10 +11,18 @@ class Chain{
     }
 
     display(){
+       if(this.chain.bodyA){
         var pointA = this.chain.bodyA.position;
-        var pointB = this.chain.bodyB.position;
-        strokeWeight(4);
-        line(pointA.x, pointA.y, pointB.x, pointB.y);
+        var Pb = this.chain.pointB;
+        strokeWeight(4); 
+        line(pointA.x, pointA.y, Pb.x, Pb.y);
     }
-    
+    }
+    fly(){
+    this.chain.bodyA= null;
+
+    }
+
+
+
 }
